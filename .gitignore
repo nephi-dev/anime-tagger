@@ -7,3 +7,4 @@ vocab/vocab.txt
 *.pt
 *.pth
 *.csv
+/__init__.py
