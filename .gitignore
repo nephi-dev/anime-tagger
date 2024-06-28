@@ -1,0 +1,9 @@
+data
+cache
+scripts
+__pycache__
+validation_data
+vocab/vocab.txt
+*.pt
+*.pth
+*.csv
