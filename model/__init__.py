@@ -102,9 +102,14 @@ class MultiTagger(nn.Module):
         self.backbone = ResNet(
             sizes=[128, 256, 512, 512, 512, 1024],
             blocks=[2, 7, 40, 16, 16, 6],
-            num_classes=num_tags,
+            num_classes=2048,
         )
-        self.out = nn.Sequential(nn.Sigmoid())
+        self.out = nn.Sequential(
+            nn.Linear(2048, 256),
+            nn.ReLU(),
+            nn.Linear(256, num_tags),
+            nn.Sigmoid(),
+        )
 
     def forward(self, x: Tensor) -> Tensor:
         x = self.backbone(x)
